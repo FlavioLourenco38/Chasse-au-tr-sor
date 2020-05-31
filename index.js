@@ -10,7 +10,7 @@ function Tableau2D(x, y) {
 // choix() récupère l'ID de la case cliquée et traite le résultat
 var message = "";
 function choix(id) {
-	caseTable = document.getElementById(id);
+	let caseTable = document.getElementById(id);
 	if (id == idTresor) {
 		caseTable.setAttribute('class', 'good');
 		msg("vous venez de trouver le trésor en "+ compteur + " trous.");
@@ -20,12 +20,29 @@ function choix(id) {
 				document.getElementById(caseId).setAttribute('onclick','');
 			}
 		}
-	} else {
+	// si clique sur la bonne ligne
+	}else if (id == coordoneX + "-0" || id == coordoneX + "-1" || id == coordoneX + "-2" || id == coordoneX + "-3" || id == coordoneX + "-4" || id == coordoneX + "-5" || id == coordoneX + "-6" || id == coordoneX + "-7"){
+   
+	   caseTable.setAttribute('class', 'ligne');     
+	   caseTable.setAttribute('onclick', '');         
+	   compteur++;
+	   AfficherCompteur(compteur);
+	   msg(" La ligne est bonne !<br />");
+
+   //si clique sur la bonne colonne
+   } else if (id == "0-" + coordoneY || id == "1-" + coordoneY || id == "2-" + coordoneY || id == "3-" + coordoneY || id == "4-" + coordoneY || id == "5-" + coordoneY || id == "6-" + coordoneY || id == "7-" + coordoneY){
+
+	   caseTable.setAttribute('class', 'colonne');    
+	   caseTable.setAttribute('onclick', '');        
+	   compteur++;
+	   AfficherCompteur(compteur);
+	   msg("la colonne est bonne !<br />");
+   } else {
 		msg("<br/> essaie encore !");
 		caseTable.setAttribute('class', 'bad');
 		caseTable.setAttribute('onclick','')
 	}
-	AfficherCompteur();
+	AfficherCompteur();	
 }
 function msg(commentaire){
 	document.getElementById("commentaires").innerHTML = commentaire;

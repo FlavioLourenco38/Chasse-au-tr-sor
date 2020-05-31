@@ -30,4 +30,10 @@ td {
 	margin: 1em;
 	font-size: 18px;
 }
+.ligne{
+    background: rgb(255, 150, 22, 0.8);
+}
 
+.colonne{
+    background: rgba(0, 63, 197, 0.8);
+}
